@@ -1,0 +1,56 @@
+// App.jsx
+import React from "react";
+import { ShoppingCart, Search, Heart } from "lucide-react";
+
+export default function App() {
+  const products = [
+    { name: "Casual Shirt", price: "₹799", img: "https://via.placeholder.com/150" },
+    { name: "Denim Jacket", price: "₹1499", img: "https://via.placeholder.com/150" },
+    { name: "Summer Dress", price: "₹999", img: "https://via.placeholder.com/150" },
+    { name: "Sneakers", price: "₹1999", img: "https://via.placeholder.com/150" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* 🔹 Navbar */}
+      <header className="flex justify-between items-center px-4 py-3 bg-white shadow">
+        <h1 className="text-xl font-bold">Clothify</h1>
+        <div className="flex gap-3">
+          <Search className="w-6 h-6" />
+          <ShoppingCart className="w-6 h-6" />
+        </div>
+      </header>
+
+      {/* 🔹 Categories */}
+      <div className="px-4 py-3 flex gap-2 overflow-x-auto text-sm">
+        {["Men", "Women", "Kids", "Offers"].map((c) => (
+          <button key={c} className="px-3 py-1 rounded-full bg-gray-200">
+            {c}
+          </button>
+        ))}
+      </div>
+
+      {/* 🔹 Banner */}
+      <div className="px-4">
+        <div className="w-full h-28 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold">
+          Big Sale – Flat 50% Off
+        </div>
+      </div>
+
+      {/* 🔹 Products */}
+      <div className="px-4 py-5 grid grid-cols-2 gap-4">
+        {products.map((p) => (
+          <div key={p.name} className="bg-white p-3 rounded-xl shadow">
+            <img src={p.img} alt={p.name} className="rounded mb-2" />
+            <h2 className="text-sm font-medium">{p.name}</h2>
+            <p className="text-gray-600 text-sm">{p.price}</p>
+            <div className="flex justify-between mt-2">
+              <button className="bg-blue-500 text-white px-2 py-1 rounded text-sm">Add</button>
+              <Heart className="w-5 h-5 text-gray-500" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
